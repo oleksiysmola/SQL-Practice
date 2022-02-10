@@ -22,8 +22,13 @@ SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 
 ```sql
 <!-- Copy solution here -->
-
-
+SELECT * FROM divisions WHERE country = 'Scotland';
+ id | code |         name          | country  
+----+------+-----------------------+----------
+ 16 | SC0  | Scottish Premiership  | Scotland
+ 17 | SC1  | Scottish Championship | Scotland
+ 18 | SC2  | Scottish League One   | Scotland
+(3 rows)
 ```
 
 4) Find the division code for the Bundesliga. Use that code to find out how many matches Freiburg have played in the Bundesliga since the data started being collected.
