@@ -14,7 +14,7 @@ SELECT * FROM matches WHERE season = 2017;
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 
 ```
 
