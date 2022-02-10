@@ -1,0 +1,1 @@
+This repository is where I post my solutions to the various SQL excercises I've been practicing.
