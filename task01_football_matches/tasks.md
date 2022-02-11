@@ -53,7 +53,7 @@ SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND 'Freiburg' IN (homet
 
 ```sql
 <!-- Copy solution here -->
-SELECT DISTINCT hometeam FROM matches WHERE hometeam LIKE '%City';
+SELECT DISTINCT hometeam FROM matches WHERE hometeam LIKE '%City%';
  hometeam
 ------
  Bath City
@@ -68,15 +68,24 @@ SELECT DISTINCT hometeam FROM matches WHERE hometeam LIKE '%City';
 
 ```sql
 <!-- Copy solution here -->
-
-
+SELECT * FROM divisions WHERE country = 'France';
+ id | code |         name          | country  
+----+------+-----------------------+----------
+ 9  | F1   | Ligue 1               | France
+ 10 | F2   | Ligue 2               | France
+(2 rows)
+SELECT COUNT(DISTINCT awayteam) FROM matches WHERE division_code IN ('F1', 'F2') IS TRUE;
+ count 
+----------------------
+  61
+(1 row)
 ```
 
 7) Have Huddersfield played Swansea in the period covered?
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches WHERE ('Huddersfield' IN (hometeam, awayteam)) AND ('Swansea' IN (hometeam, awayteam))  IS TRUE;
 
 ```
 
