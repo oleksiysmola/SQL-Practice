@@ -1,66 +1,57 @@
-# Football Matches - Tasks
+# Safari Park - Tasks
 
 Each of the questions/tasks below can be answered using a `SELECT` query. When you find a solution copy it into the code block under the question before pushing your solution to GitHub.
 
-1) Find all the matches from 2017.
+1) Select all animals from a particular pen.
 
 ```sql
 <!-- Copy solution here -->
-SELECT * FROM matches WHERE season = 2017;
+SELECT name FROM animal WHERE enclosure_id = 1; 
 
 ```
 
-2) Find all the matches featuring Barcelona.
+2) Join staff and enclosure tables through the assignments table
 
 ```sql
 <!-- Copy solution here -->
-SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
+SELECT enclosure.name, staff.name
+FROM enclosure 
+INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+INNER JOIN staff ON staff.id = assignments.employee_id;
 
 ```
 
-3) What are the names of the Scottish divisions included?
+3) The names of the staff working in a given enclosure?
 
 ```sql
 <!-- Copy solution here -->
-SELECT * FROM divisions WHERE country = 'Scotland';
- id | code |         name          | country  
-----+------+-----------------------+----------
- 16 | SC0  | Scottish Premiership  | Scotland
- 17 | SC1  | Scottish Championship | Scotland
- 18 | SC2  | Scottish League One   | Scotland
-(3 rows)
+SELECT staff.name
+FROM enclosure 
+INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+INNER JOIN staff ON staff.id = assignments.employee_id
+WHERE enclosure.name = 'bearpen';
 ```
 
-4) Find the division code for the Bundesliga. Use that code to find out how many matches Freiburg have played in the Bundesliga since the data started being collected.
+4) The names of staff working in enclosures which are closed for maintenance
 
 ```sql
 <!-- Copy solution here -->
-SELECT code FROM divisions WHERE name = 'Bundesliga';
- code 
-------
- D1
-(1 row)
-SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND 'Freiburg' IN (hometeam, awayteam) IS TRUE;
- count 
-----------------------
-  374
-(1 row)
+SELECT enclosure.name, staff.name
+FROM enclosure 
+INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+INNER JOIN staff ON staff.id = assignments.employee_id
+WHERE closed_for_maintenance = TRUE;
 
 
 ```
 
-5) Find the unique names of the teams which include the word "City" in their name (as entered in the database)
-
+5) The name of the enclosure where the oldest animal lives. If there are two animals who are the same age choose the first one alphabetically.
 ```sql
 <!-- Copy solution here -->
-SELECT DISTINCT hometeam FROM matches WHERE hometeam LIKE '%City';
- hometeam
-------
- Bath City
- Man City
- Edinburgh City
- Bristol City
-(4 rows)
+SELECT enclosure.name, animal.name FROM animal
+INNER JOIN enclosure ON enclosure.id = animal.enclosure_id
+WHERE animal.age = (SELECT MAX (animal.age) FROM animal)
+ORDER BY animal.name ASC;
 
 ```
 
