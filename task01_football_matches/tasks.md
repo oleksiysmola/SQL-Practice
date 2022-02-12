@@ -74,6 +74,7 @@ SELECT * FROM divisions WHERE country = 'France';
  9  | F1   | Ligue 1               | France
  10 | F2   | Ligue 2               | France
 (2 rows)
+
 SELECT COUNT(DISTINCT awayteam) FROM matches WHERE division_code IN ('F1', 'F2') IS TRUE;
  count 
 ----------------------
@@ -107,7 +108,9 @@ AND ftr = 'D' AND (season BETWEEN 2010 AND 2015);
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT * FROM matches 
+WHERE division_code = (SELECT code FROM divisions WHERE name = 'Premier League')
+ORDER BY (fthg + ftag, fthg) DESC;
 
 ```
 
@@ -115,8 +118,20 @@ AND ftr = 'D' AND (season BETWEEN 2010 AND 2015);
 
 ```sql
 <!-- Copy solution here -->
+SELECT name FROM divisions
+WHERE code = (SELECT division_code FROM matches 
+ORDER BY SUM(fthg + ftag) OVER (PARTITION BY (division_code, season)) DESC LIMIT 1);
+  name 
+----------------------
+  National League
+(1 row)
 
-
+SELECT season FROM matches 
+ORDER BY SUM(fthg + ftag) OVER (PARTITION BY (division_code, season)) DESC LIMIT 1;
+ season
+----------------------
+  2013
+(1 row)
 ```
 
 ### Useful Resources
