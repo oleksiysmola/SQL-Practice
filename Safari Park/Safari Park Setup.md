@@ -34,8 +34,53 @@ CREATE TABLE assignments(
 	day VARCHAR(255)
 );
 ```
+3) Populate the tables with some of your own data
 
-2) 
+```sql
+<!-- Copy solution here -->
+INSERT INTO enclosures (name, capacity, closed_for_maintenence) VALUES ('Bear Kingdom', 4, FALSE);
+INSERT INTO enclosures (name, capacity, closed_for_maintenence) VALUES ('Tiger Jungle', 3, FALSE);
+INSERT INTO enclosures (name, capacity, closed_for_maintenence) VALUES ('Aquarium', 20, TRUE);
+INSERT INTO enclosures (name, capacity, closed_for_maintenence) VALUES ('Aviary', 10, FALSE);
+INSERT INTO enclosures (name, capacity, closed_for_maintenence) VALUES ('Penguin Island', 4, FALSE);
+
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Bjorn', 'Bear', 5, 1);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Baloo', 'Bear', 7, 1);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Rocket', 'Racoon', 1, 1);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Po', 'Panda', 11, 1);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Tony', 'Tiger', 6, 2);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Tigress', 'Tiger', 5, 2);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Nemo', 'Clownfish', 1, 3);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Squidward', 'Squid', 2, 3);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Patrick', 'Starfish', 20, 3);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Dominic', 'Cockatiel', 20, 4);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Buttons', 'Cockatoo', 15, 4);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Blu', 'Spix Macaw', 15, 4);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Skipper', 'Penguin', 5, 5);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Rico', 'Penguin', 5, 5);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Private', 'Penguin', 5, 5);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Kowalski', 'Penguin', 5, 5);
+
+INSERT INTO staff (name, employee_number) VALUES ('David Attenborough', '1');
+INSERT INTO staff (name, employee_number) VALUES ('Phil Swift', '2');
+INSERT INTO staff (name, employee_number) VALUES ('Alice Roberts', '3');
+
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (1, 1, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (1, 2, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (2, 3, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (2, 4, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (3, 5, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (3, 1, 'Monday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (1, 2, 'Tuesday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (1, 3, 'Tuesday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (2, 3, 'Tuesday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (2, 1, 'Tuesday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (3, 5, 'Tuesday');
+INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (3, 4, 'Tuesday');
+```
+
+
+3) Populate the tables with some of your own data
 
 ```sql
 <!-- Copy solution here -->
