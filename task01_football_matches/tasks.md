@@ -93,7 +93,13 @@ SELECT * FROM matches WHERE ('Huddersfield' IN (hometeam, awayteam)) AND ('Swans
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT COUNT(*) FROM matches 
+WHERE division_code = (SELECT code FROM divisions WHERE name = 'Eredivisie') 
+AND ftr = 'D' AND (season BETWEEN 2010 AND 2015);
+ count 
+----------------------
+  431
+(1 row)
 
 ```
 
