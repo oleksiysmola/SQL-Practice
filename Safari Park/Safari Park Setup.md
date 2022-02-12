@@ -34,7 +34,7 @@ CREATE TABLE assignments(
 	day VARCHAR(255)
 );
 ```
-3) Populate the tables with some of your own data
+3) Populate the tables with some of your own data.
 
 ```sql
 <!-- Copy solution here -->
@@ -80,7 +80,7 @@ INSERT INTO assignments (employee_id, enclosure_id, day) VALUES (3, 4, 'Tuesday'
 ```
 
 
-3) Populate the tables with some of your own data
+4) The names of the animals in a given enclosure.
 
 ```sql
 <!-- Copy solution here -->
@@ -88,26 +88,26 @@ SELECT name FROM animal WHERE enclosure_id = 1;
 
 ```
 
-2) Join staff and enclosure tables through the assignments table
+5) Join staff and enclosure tables through the assignments table
 
 ```sql
 <!-- Copy solution here -->
-SELECT enclosure.name, staff.name
-FROM enclosure 
-INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+SELECT *
+FROM enclosures 
+INNER JOIN assignments ON assignments.enclosure_id = enclosures.id
 INNER JOIN staff ON staff.id = assignments.employee_id;
 
 ```
 
-3) The names of the staff working in a given enclosure?
+6) The names of the staff working in a given enclosure?
 
 ```sql
 <!-- Copy solution here -->
-SELECT staff.name
-FROM enclosure 
-INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+SELECT DISTINCT staff.name
+FROM enclosures 
+INNER JOIN assignments ON assignments.enclosure_id = enclosures.id
 INNER JOIN staff ON staff.id = assignments.employee_id
-WHERE enclosure.name = 'bearpen';
+WHERE enclosures.name = 'Aquarium';
 ```
 
 4) The names of staff working in enclosures which are closed for maintenance
