@@ -2,6 +2,15 @@
 
 Each of the questions/tasks below can be answered using a `SELECT` query. When you find a solution copy it into the code block under the question before pushing your solution to GitHub.
 
+1) Draw an entity relationship diagram to show the structure of the tables.
+![alt Entity relationship diagram for safari park](Tables.png "Title")
+
+```sql
+<!-- Copy solution here -->
+SELECT name FROM animal WHERE enclosure_id = 1; 
+
+```
+
 1) Select all animals from a particular pen.
 
 ```sql
