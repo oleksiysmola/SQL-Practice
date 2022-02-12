@@ -5,13 +5,37 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 1) Draw an entity relationship diagram to show the structure of the tables.
 ![alt Entity relationship diagram for safari park](Tables.png "Title")
 
+2) Set up the tables in a postgres database.
+
 ```sql
 <!-- Copy solution here -->
-SELECT name FROM animal WHERE enclosure_id = 1; 
-
+CREATE TABLE enclosures(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	capacity INT,
+	closed_for_maintenence BOOLEAN
+);
+CREATE TABLE animals(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	type VARCHAR(255),
+	age INT,
+	enclosure_id INT REFERENCES enclosures(id)
+);
+CREATE TABLE staff(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	employee_number VARCHAR(255)
+);
+CREATE TABLE assignments(
+	id SERIAL PRIMARY KEY,
+	employee_id INT REFERENCES staff(id),
+	enclosure_id INT REFERENCES enclosures(id),
+	day VARCHAR(255)
+);
 ```
 
-1) Select all animals from a particular pen.
+2) 
 
 ```sql
 <!-- Copy solution here -->
