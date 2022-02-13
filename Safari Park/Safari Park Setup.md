@@ -110,20 +110,20 @@ INNER JOIN staff ON staff.id = assignments.employee_id
 WHERE enclosures.name = 'Aquarium';
 ```
 
-4) The names of staff working in enclosures which are closed for maintenance
+7) The names of staff working in enclosures which are closed for maintenance
 
 ```sql
 <!-- Copy solution here -->
-SELECT enclosure.name, staff.name
-FROM enclosure 
-INNER JOIN assignments ON assignments.enclosure_id = enclosure.id
+SELECT DISTINCT enclosures.name, staff.name
+FROM enclosures 
+INNER JOIN assignments ON assignments.enclosure_id = enclosures.id
 INNER JOIN staff ON staff.id = assignments.employee_id
 WHERE closed_for_maintenance = TRUE;
 
 
 ```
 
-5) The name of the enclosure where the oldest animal lives. If there are two animals who are the same age choose the first one alphabetically.
+8) The name of the enclosure where the oldest animal lives. If there are two animals who are the same age choose the first one alphabetically.
 ```sql
 <!-- Copy solution here -->
 SELECT enclosure.name, animal.name FROM animal
@@ -133,11 +133,14 @@ ORDER BY animal.name ASC;
 
 ```
 
-6) How many different teams have played in matches recorded in a French division?
+9) The number of different animal types a given keeper has been assigned to work with.
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT COUNT(DISTINCT animals.type) FROM staff
+INNER JOIN assignments ON assignments.employee_id = staff.id 
+INNER JOIN animals ON assignments.enclosure_id = animals.enclosure_id
+WHERE staff.name = 'Alice Roberts';
 
 ```
 
