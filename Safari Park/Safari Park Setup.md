@@ -144,37 +144,28 @@ WHERE staff.name = 'Alice Roberts';
 
 ```
 
-7) Have Huddersfield played Swansea in the period covered?
+10) The number of different keepers who have been assigned to work in a given enclosure.
 
 ```sql
 <!-- Copy solution here -->
-
+SELECT COUNT(DISTINCT staff.id) FROM staff
+INNER JOIN assignments ON assignments.employee_id = staff.id 
+INNER JOIN enclosures ON assignments.enclosure_id = enclosures.id
+WHERE enclosures.name = 'Aquarium';
 
 ```
 
-8) How many draws were there in the Eredivisie between 2010 and 2015?
+11) The names of the other animals sharing an enclosure with a given animal
 
 ```sql
 <!-- Copy solution here -->
-
-
-```
-
-9) Select the matches played in the Premier League in order of total goals scored from highest to lowest. Where there is a tie the match with more home goals should come first.
-
-```sql
-<!-- Copy solution here -->
-
+SELECT animals.name FROM animals
+INNER JOIN enclosures ON enclosures.id = animals.enclosure_id
+WHERE enclosures.id = (SELECT animals.enclosure_id FROM animals WHERE animals.name = 'Dominic')
+AND animals.name = 'Dominic' IS FALSE;
 
 ```
 
-10) In which division and which season were the most goals scored?
-
-```sql
-<!-- Copy solution here -->
-
-
-```
 
 ### Useful Resources
 
